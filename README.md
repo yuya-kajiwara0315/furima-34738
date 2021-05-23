@@ -28,10 +28,10 @@
 | category_id      | integer    | null: false |
 | condition_id     | integer    | null: false |
 | charge_id        | integer    | null: false |
-| address_id       | integer    | null: false |
+| prefecture_id    | integer    | null: false |
 | date_id          | integer    | null: false |
 | selling_price    | integer    | null: false |
-| user_id          | integer    | null: false, foreign_key: true |
+| user             | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -40,12 +40,12 @@
 
 
 
-## order テーブル
+## orders テーブル
 
 | Column           | Type       | Options                        |
-| ---------------  | ---------- | -----------------------------  |
-| user_id          | integer    | null: false, foreign_key: true |
-| item_id          | integer    | null: false, foreign_key: true |
+| ---------------- | ---------- | ------------------------------ |
+| user             | references | null: false, foreign_key: true |
+| item             | references | null: false, foreign_key: true |
 
 
 ### Association
@@ -56,7 +56,7 @@
 
 
 
-## address テーブル
+## addresses テーブル
 
 | Column           | Type       | Options     |
 | ---------------  | ---------- | ----------- |
@@ -66,7 +66,7 @@
 | house_number     | string     | null: false |
 | building_name    | string     |             |
 | phone_number     | string     | null: false |
-| order_id         | integer    | null: false, foreign_key: true |
+| order            | references | null: false, foreign_key: true |
 
 
 ### Association
