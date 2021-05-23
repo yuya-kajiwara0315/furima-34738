@@ -6,7 +6,6 @@
 | -------------------- | ------- | ----------- |
 | nickname             | string  | null: false |
 | email                | string  | null: false, unique: true |
-| password             | string  | null: false |
 | encrypted_password   | string  | null: false |
 | last_name            | string  | null: false |
 | first_name           | string  | null: false |
@@ -24,15 +23,14 @@
 
 | Column           | Type       | Options     |
 | ---------------  | ---------- | ----------- |
-| image            | string     | null: false |
 | name             | string     | null: false |
 | description      | string     | null: false |
-| category         | string     | null: false |
-| condition        | string     | null: false |
-| delivery_charge  | string     | null: false |
-| shipping_address | string     | null: false |
-| shipping_date    | string     | null: false |
-| selling_price    | string     | null: false |
+| category_id      | integer    | null: false |
+| condition_id     | integer    | null: false |
+| charge_id        | integer    | null: false |
+| address_id       | integer    | null: false |
+| date_id          | integer    | null: false |
+| selling_price    | integer    | null: false |
 | user_id          | integer    | null: false, foreign_key: true |
 
 ### Association
@@ -63,11 +61,12 @@
 | Column           | Type       | Options     |
 | ---------------  | ---------- | ----------- |
 | address          | string     | null: false |
-| prefectures      | string     | null: false |
+| prefecture_id    | integer    | null: false |
 | city             | string     | null: false |
 | house_number     | string     | null: false |
 | building_name    | string     |             |
 | phone_number     | string     | null: false |
+| order_id         | integer    | null: false, foreign_key: true |
 
 
 ### Association
