@@ -60,3 +60,4 @@ end
 
 gem 'devise'
 gem 'pry-rails'
+gem 'factory_bot_rails'
