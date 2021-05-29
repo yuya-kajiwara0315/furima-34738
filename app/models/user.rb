@@ -4,12 +4,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :nickname, presence: true
-  validates :email, uniqueness: { case_sensitive: true }
-  validates :password, presence: true, length: { minimum: 6 }
-  validates :last_name, presence: true
-  validates :first_name, presence: true
-  validates :last_name_kana, presence: true
-  validates :first_name_kana, presence: true
-  validates :birth_day, presence: true
+  with_options presence: true do
+    validates :nickname
+    validates :email, uniqueness: { case_sensitive: true }
+    validates :password, length: { minimum: 6 }
+    validates :last_name
+    validates :first_name
+    validates :last_name_kana
+    validates :first_name_kana
+    validates :birth_day
+  end
 end
