@@ -8,7 +8,7 @@ class User < ApplicationRecord
     validates :nickname
     validates :email, uniqueness: { case_sensitive: true }
 
-    VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i
+    VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i
     validates :password, length: { minimum: 6 }, format: { with: VALID_PASSWORD_REGEX }
 
     VALID_NAME_REGEX = /\A[ぁ-んァ-ヶ一-龥々ー]+\z/
