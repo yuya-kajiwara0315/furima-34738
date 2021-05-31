@@ -11,6 +11,11 @@ RSpec.describe User, type: :model do
         expect(@user).to be_valid
       end
 
+      it "emailに@が含まれていれば登録できる" do
+        @user.email= "test@gmail.com"
+        expect(@user).to be_valid
+      end
+
       it "passwordが６文字以上の半角英数字混合であれば登録できる" do
         @user.password = "000aaa"
         @user.password_confirmation = "000aaa"
