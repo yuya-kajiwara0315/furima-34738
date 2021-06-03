@@ -11,6 +11,6 @@ with_options presence: true do
   validates :selling_price
 end
   
-  
+  belongs_to :user
   has_one_attached :image
 end
