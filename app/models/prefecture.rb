@@ -20,7 +20,7 @@ class Prefecture < ActiveHash::Base
   ]
 
   include ActiveHash::Associations
-  has_many :informations
+  has_many :items
 
 
 end
