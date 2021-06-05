@@ -1,6 +1,76 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
+  before do
+    @item = FactoryBot.build(:item)
+  end
 
+  describe '商品出品機能' do
+
+    context '商品が出品できるとき' do
+ 
+    end
+
+
+
+    context '商品が出品できないとき' do
+
+      it 'nameが空では登録できない' do
+        @item.name = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Name can't be blank")
+      end
+
+      it 'descriptionが空では登録できない' do
+        @item.description = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Description can't be blank")
+      end
+
+      it 'category_idが１では登録できない' do
+        @item.category_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category must be other than 1")
+      end
+
+      it 'condition_idが１では登録できない' do
+        @item.condition_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Condition must be other than 1")
+      end
+
+      it 'charge_idが１では登録できない' do
+        @item.charge_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Charge must be other than 1")
+      end
+
+      it 'prefecture_idが１では登録できない' do
+        @item.prefecture_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
+      end
+
+      it 'delivery_idが１では登録できない' do
+        @item.delivery_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Delivery must be other than 1")
+      end
+
+      it 'selling_priceが空では登録できない' do
+        @item.selling_price = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Selling price can't be blank")
+      end
+
+      it 'user_idが空では登録できない' do
+        @item.user_id = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include("User must exist")
+      end
+
+    end
+
+  end
 end
 
