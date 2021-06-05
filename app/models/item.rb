@@ -9,6 +9,7 @@ with_options presence: true do
   validates :prefecture_id, numericality: { other_than: 1 }
   validates :delivery_id, numericality: { other_than: 1 }
   validates :selling_price
+  validates :image
 end
   
   belongs_to :user

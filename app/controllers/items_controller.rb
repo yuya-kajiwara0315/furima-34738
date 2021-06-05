@@ -18,8 +18,8 @@ class ItemsController < ApplicationController
 
   private
 
-  # ActiveStorage未実装
+  
   def item_params
-    params.require(:item).permit(:name, :description, :category_id, :condition_id, :charge_id, :prefecture_id, :delivery_id, :selling_price).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :description, :category_id, :condition_id, :charge_id, :prefecture_id, :delivery_id, :selling_price, :image).merge(user_id: current_user.id)
   end
 end
