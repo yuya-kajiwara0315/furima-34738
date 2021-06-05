@@ -3,11 +3,11 @@ class Item < ApplicationRecord
 with_options presence: true do
   validates :name
   validates :description
-  validates :category_id
-  validates :condition_id
-  validates :charge_id
+  validates :category_id, numericality: { other_than: 1 }
+  validates :condition_id, numericality: { other_than: 1 }
+  validates :charge_id, numericality: { other_than: 1 }
   validates :prefecture_id, numericality: { other_than: 1 }
-  validates :date_id
+  validates :delivery_id, numericality: { other_than: 1 }
   validates :selling_price
 end
   
@@ -16,5 +16,9 @@ end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :prefecture
+  belongs_to :delivery
+  belongs_to :charge
+  belongs_to :category
+  belongs_to :condition
   
 end
