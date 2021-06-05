@@ -1,4 +1,5 @@
 FactoryBot.define do
+
   factory :user do
     nickname              { 'yamada太郎' }
     email                 { Faker::Internet.free_email }
@@ -10,4 +11,5 @@ FactoryBot.define do
     last_name_kana        { 'タロウ' }
     birth_day             { "2000-01-01" }
   end
+  
 end
