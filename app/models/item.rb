@@ -8,7 +8,7 @@ with_options presence: true do
   validates :charge_id, numericality: { other_than: 1 }
   validates :prefecture_id, numericality: { other_than: 1 }
   validates :delivery_id, numericality: { other_than: 1 }
-  validates :selling_price
+  validates :selling_price, numericality: { greater_than_or_equal_to: 300, less_than: 9999999 }
   validates :image
 end
   

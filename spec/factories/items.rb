@@ -8,7 +8,7 @@ FactoryBot.define do
     charge_id      { '2' }
     prefecture_id  { '2' }
     delivery_id    { '2' }
-    selling_price  { '2' }
+    selling_price  { '300' }
     user_id        { '2' }
   end
 
