@@ -32,7 +32,35 @@ RSpec.describe Item, type: :model do
       it "category_idが１以外なら登録できる" do
         @user = create(:user)
         @item = build(:item, user_id: @user.id)
-        @item.category_id = '2'
+        @item.category_id = 2
+        expect(@item).to be_valid
+      end
+
+      it "condition_idが１以外なら登録できる" do
+        @user = create(:user)
+        @item = build(:item, user_id: @user.id)
+        @item.condition_id = 2
+        expect(@item).to be_valid
+      end
+
+      it "charge_idが１以外なら登録できる" do
+        @user = create(:user)
+        @item = build(:item, user_id: @user.id)
+        @item.charge_id = 2
+        expect(@item).to be_valid
+      end
+
+      it "prefecture_idが１以外なら登録できる" do
+        @user = create(:user)
+        @item = build(:item, user_id: @user.id)
+        @item.prefecture_id = 2
+        expect(@item).to be_valid
+      end
+
+      it "delivery_idが１以外なら登録できる" do
+        @user = create(:user)
+        @item = build(:item, user_id: @user.id)
+        @item.charge_id = 2
         expect(@item).to be_valid
       end
 
@@ -75,31 +103,31 @@ RSpec.describe Item, type: :model do
       end
 
       it 'category_idが１では登録できない' do
-        @item.category_id = '1'
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Category must be other than 1")
       end
 
       it 'condition_idが１では登録できない' do
-        @item.condition_id = '1'
+        @item.condition_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Condition must be other than 1")
       end
 
       it 'charge_idが１では登録できない' do
-        @item.charge_id = '1'
+        @item.charge_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Charge must be other than 1")
       end
 
       it 'prefecture_idが１では登録できない' do
-        @item.prefecture_id = '1'
+        @item.prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
       end
 
       it 'delivery_idが１では登録できない' do
-        @item.delivery_id = '1'
+        @item.delivery_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery must be other than 1")
       end
@@ -123,7 +151,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'user_idが空では登録できない' do
-        @item.user_id = ''
+        @item.user_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("User must exist")
       end
