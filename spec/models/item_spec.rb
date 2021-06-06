@@ -64,6 +64,20 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
 
+      it 'selling_priceが３００以上なら登録できる' do
+        @user = create(:user)
+        @item = build(:item, user_id: @user.id)
+        @item.selling_price = 300
+        expect(@item).to be_valid
+      end
+
+      it 'selling_priceが９９９９９９９以下なら登録できる' do
+        @user = create(:user)
+        @item = build(:item, user_id: @user.id)
+        @item.selling_price = 9999999
+        expect(@item).to be_valid
+      end
+
  
     end
 
@@ -139,15 +153,15 @@ RSpec.describe Item, type: :model do
       end
 
       it 'selling_priceが２９９以下では登録できない' do
-        @item.selling_price = '299'
+        @item.selling_price = 299
         @item.valid?
         expect(@item.errors.full_messages).to include("Selling price must be greater than or equal to 300")
       end
 
       it 'selling_priceが１０００００００以上では登録できない' do
-        @item.selling_price = '10000000'
+        @item.selling_price = 10000000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Selling price must be less than 9999999")
+        expect(@item.errors.full_messages).to include("Selling price must be less than or equal to 9999999")
       end
 
       it 'user_idが空では登録できない' do
