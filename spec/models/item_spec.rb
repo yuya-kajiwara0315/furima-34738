@@ -74,7 +74,7 @@ RSpec.describe Item, type: :model do
       it 'selling_priceが９９９９９９９以下なら登録できる' do
         @user = create(:user)
         @item = build(:item, user_id: @user.id)
-        @item.selling_price = 9999999
+        @item.selling_price = 9_999_999
         expect(@item).to be_valid
       end
 
@@ -159,7 +159,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'selling_priceが１０００００００以上では登録できない' do
-        @item.selling_price = 10000000
+        @item.selling_price = 10_000_000
         @item.valid?
         expect(@item.errors.full_messages).to include("Selling price must be less than or equal to 9999999")
       end
