@@ -78,6 +78,13 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
 
+      it 'selling_priceが半角数字なら登録できる' do
+        @user = create(:user)
+        @item = build(:item, user_id: @user.id)
+        @item.selling_price = 300
+        expect(@item).to be_valid
+      end
+
  
     end
 
@@ -161,6 +168,12 @@ RSpec.describe Item, type: :model do
         @item.selling_price = 10_000_000
         @item.valid?
         expect(@item.errors.full_messages).to include("Selling price must be less than or equal to 9999999")
+      end
+
+      it 'selling_priceが半角数字以外では登録できない' do
+        @item.selling_price = 'aaa'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Selling price is not a number")
       end
 
       it 'user_idが空では登録できない' do
