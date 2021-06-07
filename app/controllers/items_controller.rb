@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, only: [:new]
+
   def index
     # 商品一覧機能にて実装予定
     # @items = Item.all
