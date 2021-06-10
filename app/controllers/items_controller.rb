@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all.order(created_at: :desc)
   end
-  
+
   def new
     @item = Item.new
   end
@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    # ここに処理を書きます。
+    @item = Item.find(params[:id])
   end
 
   private
