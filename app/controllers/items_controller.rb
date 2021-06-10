@@ -18,6 +18,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+    # ここに処理を書きます。
+  end
+
   private
 
   
