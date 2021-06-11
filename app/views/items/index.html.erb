@@ -132,35 +132,35 @@
 
     <% @items.each do |item| %>
       <li class='list'>
-        <%= link_to "#" do %>
-        <div class='item-img-content'>
-          <%= image_tag item.image, class: "item-img" %>
+        <%= link_to item_path(item.id) do %>
+          <div class='item-img-content'>
+            <%= image_tag item.image, class: "item-img" %>
 
-          <%# 商品が売れていればsold outを表示しましょう %>
-          <div class='sold-out'>
-            <span>Sold Out!!</span>
+            
+            <div class='sold-out'>
+              <span>Sold Out!!</span>
+            </div>
+            
           </div>
-          <%# //商品が売れていればsold outを表示しましょう %>
-        </div>
 
-          <div class='item-info'>
-            <h3 class='item-name'>
-              <%= item.name %>
-            </h3>
-            <div class='item-price'>
-              <span><%= item.selling_price %>円<br><%= item.delivery.name %></span>
-              <div class='star-btn'>
-                <%= image_tag "star.png", class:"star-icon" %>
-                <span class='star-count'>0</span>
+            <div class='item-info'>
+              <h3 class='item-name'>
+                <%= item.name %>
+              </h3>
+              <div class='item-price'>
+                <span><%= item.selling_price %>円<br><%= item.delivery.name %></span>
+                <div class='star-btn'>
+                  <%= image_tag "star.png", class:"star-icon" %>
+                  <span class='star-count'>0</span>
+                </div>
               </div>
             </div>
-          </div>
         <% end %>
       </li>
     <% end %>
 
 
-    <%# 配列@itemsの要素が０の時は以下の画像を表示したい ここから %>
+    
     <% if @items.length == 0%>
       <li class='list'>
         <%= link_to '#' do %>
@@ -180,7 +180,7 @@
         <% end %>
       </li>
     <% end %>
-    <%# 配列@itemsの要素が０の時は以下の画像を表示したい ここまで %>
+    
       
 
     </ul>
