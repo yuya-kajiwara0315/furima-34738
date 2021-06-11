@@ -136,11 +136,11 @@
           <div class='item-img-content'>
             <%= image_tag item.image, class: "item-img" %>
 
-            <%# 商品が売れていればsold outを表示しましょう %>
+            
             <div class='sold-out'>
               <span>Sold Out!!</span>
             </div>
-            <%# //商品が売れていればsold outを表示しましょう %>
+            
           </div>
 
             <div class='item-info'>
@@ -160,7 +160,7 @@
     <% end %>
 
 
-    <%# 配列@itemsの要素が０の時は以下の画像を表示したい ここから %>
+    
     <% if @items.length == 0%>
       <li class='list'>
         <%= link_to '#' do %>
@@ -180,7 +180,7 @@
         <% end %>
       </li>
     <% end %>
-    <%# 配列@itemsの要素が０の時は以下の画像を表示したい ここまで %>
+    
       
 
     </ul>
