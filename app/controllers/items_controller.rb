@@ -31,6 +31,7 @@ class ItemsController < ApplicationController
     item.update(item_params)
   end
 
+
   private
 
   
