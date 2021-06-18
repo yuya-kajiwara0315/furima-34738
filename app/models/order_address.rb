@@ -14,4 +14,11 @@ class OrderAddress
 
   validates :prefecture_id, numericality: {other_than: 0, message: "can't be blank"}
 
+  def save
+    # 商品情報を保存して変数orderに代入する
+    order = Order.create(user_id: user_id, item_id: item_id)
+    # 住所を保存する
+    # 
+    Address.create(address: address, prefecture_id: prefecture_id, city: city, house_number: house_number, phone_number: phone_number)
+  end
 end
