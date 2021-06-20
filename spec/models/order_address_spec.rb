@@ -13,7 +13,11 @@ RSpec.describe OrderAddress, type: :model do
     context '内容に問題ない場合' do
 
       it 'すべての値が正しく入力されていれば保存できること' do
-        # binding.pry
+        expect(@order_address).to be_valid
+      end
+
+      it 'building_nameは空でも保存できること' do
+        @order_address.building_name = ''
         expect(@order_address).to be_valid
       end
     end
@@ -26,6 +30,13 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Address can't be blank")
       end
+
+      # it 'addressが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
+      #   @donation_address.address = '1234567'
+      #   @donation_address.valid?
+      #   bindind.pry
+      #   expect(@order_address.errors.full_messages).to include()
+      # end
 
       it 'prefecture_idが１だと保存できないこと' do
         @order_address.prefecture_id = 1
