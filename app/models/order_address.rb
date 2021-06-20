@@ -6,13 +6,13 @@ class OrderAddress
     validates :address,       format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
     validates :city,          format: {with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: '全角文字を使用してください'}
     validates :house_number
-    validates :phone_number,  format: {with: /\A0[0-9]{9,10}\z/}
+    validates :phone_number,  format: {with: /\A[0-9]{10,11}\z/}
 
     validates :user_id
     validates :item_id
   end
 
-  validates :prefecture_id, numericality: {other_than: 0, message: "can't be blank"}
+  validates :prefecture_id, numericality: {other_than: 1, message: "can't be blank"}
 
   def save
     # 商品情報を保存して変数orderに代入する
