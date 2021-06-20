@@ -6,6 +6,7 @@ RSpec.describe OrderAddress, type: :model do
       user = FactoryBot.create(:user)
       item = FactoryBot.create(:item)
       @order_address = FactoryBot.build(:order_address, user_id: user.id, item_id: item.id)
+      sleep(1)
     end
 
 
@@ -38,11 +39,11 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include("City can't be blank")
       end
 
-      # it 'cityが全角文字以外だと保存できないこと' do
-      #   @order_address.city = 'tokyo'
-      #   @order_address.valid?
-      #   expect(@order_address.errors.full_messages).to include("City 全角文字を使用してください")
-      # end
+      it 'cityが全角文字以外だと保存できないこと' do
+        @order_address.city = 'tokyo'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("City 全角文字を使用してください")
+      end
 
       it 'house_numberが空だと保存できないこと' do
         @order_address.house_number = ''
@@ -50,17 +51,17 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include("House number can't be blank")
       end
 
-      # it 'phone_numberが空だと保存できないこと' do
-      #   @order_address.phone_number = ''
-      #   @order_address.valid?
-      #   expect(@order_address.errors.full_messages).to include("Phone number can't be blank")
-      # end
+      it 'phone_numberが空だと保存できないこと' do
+        @order_address.phone_number = ''
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Phone number can't be blank")
+      end
 
-      # it 'phone_numberが数字以外だと保存できないこと' do
-      #   @order_address.phone_number = '電話番号'
-      #   @order_address.valid?
-      #   expect(@order_address.errors.full_messages).to include("Phone number is invalid")
-      # end
+      it 'phone_numberが数字以外だと保存できないこと' do
+        @order_address.phone_number = '電話番号'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Phone number is invalid")
+      end
     end
 
   end
