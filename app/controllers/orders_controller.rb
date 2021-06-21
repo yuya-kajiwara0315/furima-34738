@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :move_to_index, only: [:index]
+
   def index
     @order_address = OrderAddress.new
   end
@@ -17,5 +19,9 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order_address).permit(:address, :prefecture_id, :city, :house_number, :building_name, :phone_number).merge(user_id: current_user.id)
+  end
+
+  def move_to_index
+    @item = Item.find(params[:id])
   end
 end
