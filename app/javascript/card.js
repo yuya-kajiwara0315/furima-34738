@@ -1,5 +1,5 @@
 const pay = () => {
-  //　公開鍵の情報はGitHubにpushできないため仮置き
+  // 公開鍵の情報はGitHubにpushできないため仮置き
   Payjp.setPublicKey("pk_test_******************");
   const form = document.getElementById("charge-form");
   form.addEventListener("submit", (e) => {
@@ -19,10 +19,11 @@ const pay = () => {
       if (status == 200) {
         const token = response.id;
         const renderDom = document.getElementById("charge-form");
-        const tokenObj = `<input value=${token} name='token'>`;
+        const tokenObj = `<input value=${token} name='token' type="hidden">`;
         renderDom.insertAdjacentHTML("beforeend", tokenObj);
-        debugger;
       }
+
+
     });
   });
 };
