@@ -1,6 +1,5 @@
 const pay = () => {
-  // 公開鍵の情報はGitHubにpushできないため仮置き
-  Payjp.setPublicKey("pk_test_******************");
+  Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
   const form = document.getElementById("charge-form");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
