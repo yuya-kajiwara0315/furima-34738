@@ -7,13 +7,14 @@ class OrdersController < ApplicationController
 
   def create
     @order_address = OrderAddress.new(order_params)
-    Payjp.api_key = "sk_test_***********"  # PAY.JPテスト秘密鍵を記述
-    Payjp::Charge.create(
-      amount: @item.selling_price,  # 商品の値段
-      card: order_params[:token],    # カードトークン
-      currency: 'jpy'                # 通貨の種類（日本円）
-    )
     if @order_address.valid?
+      binding.pry
+      Payjp.api_key = "sk_test_***********"  # PAY.JPテスト秘密鍵を記述
+      Payjp::Charge.create(
+        amount: @item.selling_price,  # 商品の値段
+        card: order_params[:token],    # カードトークン
+        currency: 'jpy'                # 通貨の種類（日本円）
+      )
       @order_address.save
       redirect_to root_path
     else
