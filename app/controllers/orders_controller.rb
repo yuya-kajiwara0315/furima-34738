@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :move_to_index_create, only: [:index, :create]
-  before_action :sold_out_item, only: [:index]
+  before_action :sold_out_item, only: [:index, :create]
 
   before_action :authenticate_user!, only: [:index, :create]
   before_action :move_to_order, only: [:index, :create]
