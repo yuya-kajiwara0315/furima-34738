@@ -31,12 +31,11 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include("Address can't be blank")
       end
 
-      # it 'addressが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
-      #   @donation_address.address = '1234567'
-      #   @donation_address.valid?
-      #   bindind.pry
-      #   expect(@order_address.errors.full_messages).to include()
-      # end
+      it 'addressが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
+        @order_address.address = '1234567'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Address is invalid. Include hyphen(-)")
+      end
 
       it 'prefecture_idが１だと保存できないこと' do
         @order_address.prefecture_id = 1
