@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :move_to_index_create, only: [:index, :create]
+  before_action :model_pull_data, only: [:index, :create]
   before_action :sold_out_item, only: [:index, :create]
 
   before_action :authenticate_user!, only: [:index, :create]
@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
     params.require(:order_address).permit(:address, :prefecture_id, :city, :house_number, :building_name, :phone_number).merge(user_id: current_user.id, token: params[:token], item_id: @item.id)
   end
 
-  def move_to_index_create
+  def model_pull_data
     @item = Item.find(params[:item_id])
   end
 
