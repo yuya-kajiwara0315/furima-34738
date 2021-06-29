@@ -49,12 +49,6 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include("City can't be blank")
       end
 
-      it 'cityが全角文字以外だと保存できないこと' do
-        @order_address.city = 'tokyo'
-        @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("City 全角文字を使用してください")
-      end
-
       it 'house_numberが空だと保存できないこと' do
         @order_address.house_number = ''
         @order_address.valid?
