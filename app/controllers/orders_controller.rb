@@ -1,9 +1,7 @@
 class OrdersController < ApplicationController
   before_action :model_pull_data, only: [:index, :create]
-  before_action :sold_out_item, only: [:index, :create]
-
   before_action :authenticate_user!, only: [:index, :create]
-  before_action :move_to_order, only: [:index, :create]
+  before_action :sold_out_item_or_move_to_order, only: [:index, :create]
 
   def index
     @order_address = OrderAddress.new
@@ -41,11 +39,7 @@ class OrdersController < ApplicationController
     )
   end
 
-  def sold_out_item
-    redirect_to root_path if @item.order.present?
-  end
-
-  def move_to_order
-    redirect_to root_path if current_user.id == @item.user_id
+  def sold_out_item_or_move_to_order
+    redirect_to root_path if @item.order.present? || current_user.id == @item.user_id
   end
 end
