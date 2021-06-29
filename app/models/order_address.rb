@@ -4,7 +4,7 @@ class OrderAddress
 
   with_options presence: true do
     validates :address,       format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
-    validates :city,          format: {with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: '全角文字を使用してください'}
+    validates :city
     validates :house_number
     validates :phone_number,  format: {with: /\A[0-9]{10,11}\z/}
 
